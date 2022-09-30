@@ -33,6 +33,7 @@ module.exports = {
     'import/first': 'off',
     'import/no-absolute-path': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [
       1,
       {
