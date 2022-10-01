@@ -1,14 +1,16 @@
 import 'App.css';
-import Tab, {TabProps} from 'component/tab';
+import Dropdown, {DropdownItem} from 'component/dropdown';
 
 function App() {
-  const TabData: TabProps[] = [
-    {title: <div> 탭1</div>, content: <div> 내용 </div>},
-    {title: <div> 탭2</div>, content: <div> 내용2 </div>},
-  ];
   return (
     <div className="App">
-      <Tab data={TabData} />
+      <Dropdown value={10}>
+        <DropdownItem value={10}> 10 </DropdownItem>
+        <DropdownItem value={20}> 20 </DropdownItem>
+        <DropdownItem value={30}> 30 </DropdownItem>
+        <DropdownItem value="40"> `40` </DropdownItem>
+        <DropdownItem value="50"> `50` </DropdownItem>
+      </Dropdown>
     </div>
   );
 }

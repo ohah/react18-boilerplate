@@ -34,6 +34,8 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'import/no-extraneous-dependencies': 'off',
     'react/react-in-jsx-scope': 'off',
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off",  
     'react/function-component-definition': [
       'error',
       {
