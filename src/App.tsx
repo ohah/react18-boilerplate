@@ -1,10 +1,14 @@
 import 'App.css';
-import Toggle from 'component/Toggle';
+import Pagination from 'component/Pagination';
+import {useState} from 'react';
 
 function App() {
+  const onChange = (value: number) => {
+    console.log(value);
+  };
   return (
     <div className="App">
-      <Toggle active />
+      <Pagination count={10} color="blue" page={5} onChange={onChange} />
     </div>
   );
 }
