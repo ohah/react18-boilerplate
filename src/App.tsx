@@ -1,22 +1,14 @@
-import React from 'react';
 import 'App.css';
-import Tooltip from 'component/Tooltip';
+import Tab, {TabProps} from 'component/tab';
 
 function App() {
+  const TabData: TabProps[] = [
+    {title: <div> 탭1</div>, content: <div> 내용 </div>},
+    {title: <div> 탭2</div>, content: <div> 내용2 </div>},
+  ];
   return (
     <div className="App">
-      <Tooltip title="타이틀" arrow placement="top">
-        <div> top </div>
-      </Tooltip>
-      <Tooltip title="타이틀" arrow placement="left">
-        <div> left </div>
-      </Tooltip>
-      <Tooltip title="타이틀" arrow placement="bottom">
-        <div> right </div>
-      </Tooltip>
-      <Tooltip title="타이틀" arrow placement="right">
-        <div> bottom </div>
-      </Tooltip>
+      <Tab data={TabData} />
     </div>
   );
 }
