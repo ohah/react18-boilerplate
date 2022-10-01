@@ -1,6 +1,5 @@
 import 'App.css';
-import Dropdown, {DropdownItem} from 'component/dropdown';
-import Toggle from 'component/toggle';
+import Toggle from 'component/Toggle';
 
 function App() {
   return (
