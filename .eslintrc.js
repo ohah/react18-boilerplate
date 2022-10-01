@@ -34,12 +34,22 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'import/no-extraneous-dependencies': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: ['function-declaration', 'arrow-function'],
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     'react/jsx-filename-extension': [
       1,
       {
         extensions: ['.tsx'],
       },
     ],
+    'react/destructuring-assignment': 'off',
+    'react/no-unused-prop-types': 'off',
+    'react/require-default-props': 'off',
     'jsx-dev-runtime': 'off',
     'import/order': 'off',
     'no-underscore-dangle': 'off',
