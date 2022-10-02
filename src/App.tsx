@@ -1,19 +1,24 @@
 import 'App.css';
-import Modal from 'component/Modal';
-import {useState} from 'react';
+import {ToastContainer} from 'component/toast';
+import useToast from 'hook/useToast';
+import {useEffect} from 'react';
 
 function App() {
-  const [isModal, setModal] = useState(false);
+  const [toast, setToast] = useToast();
+  // console.log('toast', toast());
+  useEffect(() => {
+    setInterval(() => {
+      setToast({
+        type: 'info',
+        message: '테스트',
+        timeout: 3000,
+      });
+      console.log('실행', toast, setToast);
+    }, 3000);
+  }, []);
   return (
     <div className="App">
-      <button type="button" onClick={() => setModal(true)}>
-        모달
-      </button>
-      <Modal isShow={isModal} close={() => setModal(false)}>
-        <button type="button" onClick={() => setModal(false)}>
-          ㅁㄴㅇㄹ
-        </button>
-      </Modal>
+      <ToastContainer />
     </div>
   );
 }
