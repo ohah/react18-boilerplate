@@ -34,8 +34,9 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'import/no-extraneous-dependencies': 'off',
     'react/react-in-jsx-scope': 'off',
-    "no-empty-function": "off",
-    "@typescript-eslint/no-empty-function": "off",  
+    'no-empty-function': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     'react/function-component-definition': [
       'error',
       {
@@ -61,6 +62,7 @@ module.exports = {
     'no-var': 'off',
     'no-void': 'off',
     'no-shadow': 'off',
+    'object-shorthand': 'off',
     'no-unused-vars': 'off',
     'prefer-template': 'off',
     'no-useless-concat': 'off',

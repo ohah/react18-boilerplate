@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import {useEffect, useMemo, useState} from 'react';
 import styled from 'styled-components';
 
