@@ -53,6 +53,8 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/no-unused-prop-types': 'off',
     'react/require-default-props': 'off',
+    'react/jsx-child-element-spacing': 'off',
+    'react/jsx-one-expression-per-line': 'off',
     'jsx-dev-runtime': 'off',
     'import/order': 'off',
     'no-underscore-dangle': 'off',
