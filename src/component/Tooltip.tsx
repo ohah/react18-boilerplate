@@ -18,7 +18,7 @@ const Message = styled.div<TooltipProps>`
   font-weight: 500;
   height: auto;
   letter-spacing: -0.25px;
-  padding: 0px 2.5px;
+  padding: 0.4rem 0.75rem;
   position: relative;
   width: fit-content;
   position: absolute;
@@ -26,13 +26,13 @@ const Message = styled.div<TooltipProps>`
   ${props => {
     switch (props.placement) {
       case 'bottom':
-        return 'top:100%;left:50%';
+        return 'top:calc(100% + 10px);left:50%';
       case 'left':
         return 'top:50%;right:calc(100% + 10px)';
       case 'right':
         return 'top:50%;left:calc(100% + 10px)';
       case 'top':
-        return 'bottom:100%;left:50%';
+        return 'bottom:calc(100% + 10px);left:50%';
       default:
         return '100%';
     }

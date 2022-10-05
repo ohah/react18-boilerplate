@@ -1,24 +1,21 @@
 import 'App.css';
 import {ToastContainer} from 'component/toast';
-import useToast from 'hook/useToast';
-import {useEffect} from 'react';
+import reset from 'styled-reset';
+import {createGlobalStyle} from 'styled-components';
+import Home from 'pages/Home';
+import ToastProvider from 'context/ToastContext';
 
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+`;
 function App() {
-  const [toast, setToast] = useToast();
-  // console.log('toast', toast());
-  useEffect(() => {
-    setInterval(() => {
-      setToast({
-        type: 'info',
-        message: '테스트',
-        timeout: 3000,
-      });
-      console.log('실행', toast, setToast);
-    }, 3000);
-  }, []);
   return (
     <div className="App">
-      <ToastContainer />
+      <ToastProvider>
+        <GlobalStyle />
+        <Home />
+        <ToastContainer />
+      </ToastProvider>
     </div>
   );
 }
