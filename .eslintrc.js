@@ -51,7 +51,7 @@ module.exports = {
         extensions: ['.tsx'],
       },
     ],
-    'object-shorthand': ['0', 'always'],
+    'object-shorthand': ['off', 'always'],
     'react/destructuring-assignment': 'off',
     'react/no-unused-prop-types': 'off',
     'react/require-default-props': 'off',
