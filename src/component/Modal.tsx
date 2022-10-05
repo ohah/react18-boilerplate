@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, {useRef} from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 const ModalWrapper = styled.div`
@@ -39,18 +40,17 @@ const Modal = (props: ModalProps) => {
     e.preventDefault();
     e.stopPropagation();
   };
-  return (
+  return ReactDOM.createPortal(
     <>
-      {props.isShow === true ? (
+      {props.isShow === true && (
         <ModalWrapper onClick={onWrapper} ref={wrapper}>
           <ModalBody onClick={onBody} ref={body}>
             {props.children}
           </ModalBody>
         </ModalWrapper>
-      ) : (
-        <div />
       )}
-    </>
+    </>,
+    document.getElementById('modal')!,
   );
 };
 

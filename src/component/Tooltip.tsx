@@ -39,8 +39,8 @@ const Message = styled.div<TooltipProps>`
   }};
   transform: ${props => {
     switch (props.placement) {
-      case 'top':
       case 'bottom':
+      case 'top':
         return 'translateX(-50%)';
       case 'right':
       case 'left':
@@ -106,8 +106,9 @@ const afterStyle = (placement: Placement) => {
       return '';
   }
 };
-const Wrapper = styled.div`
+const Wrapper = styled.span`
   position: relative;
+  display: inline-block;
   &:hover ${Message} {
     display: block;
   }
