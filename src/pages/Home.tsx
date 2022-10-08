@@ -1,5 +1,7 @@
+import {useEffect, useState} from 'react';
+
 const Home = () => {
-  return <div>홈이다</div>;
+  return <div> 홈 </div>;
 };
 
 export default Home;

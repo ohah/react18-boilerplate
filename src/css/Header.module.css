@@ -1,0 +1,23 @@
+.body{
+  min-height:100vh;
+  min-width:100vw;
+  padding:0;
+  margin:0;
+}
+
+.header{
+  height:60px;
+  display:flex;
+  column-gap: 10px;
+  justify-content: center;
+  width:100%;
+  border-bottom:1px solid #ddd;
+  align-items: center;
+}
+
+.header a:visited{
+  color:#000;
+}
+.header a {
+  text-decoration: none;
+}
