@@ -90,15 +90,15 @@ const Dropdown = ({value, onChange, defaultValue}: DropdownProps) => {
     onChange(value);
   }, []);
 
-  const closeDoropdown = (e: MouseEvent) => {
+  const closeDropdown = (e: MouseEvent) => {
     e.preventDefault();
     setAnimation(false);
   };
 
   useEffect(() => {
-    document.body.addEventListener('click', closeDoropdown);
+    document.body.addEventListener('click', closeDropdown);
     return () => {
-      document.body.addEventListener('click', closeDoropdown);
+      document.body.removeEventListener('click', closeDropdown);
     };
   }, []);
 
@@ -127,7 +127,11 @@ const Dropdown = ({value, onChange, defaultValue}: DropdownProps) => {
       {isOpen && (
         <ListWrapper isShow={isAnimation}>
           {value.map(list => {
-            return <List onClick={() => selectedValue(list.value)}>{list.title}</List>;
+            return (
+              <List key={list.value} onClick={() => selectedValue(list.value)}>
+                {list.title}
+              </List>
+            );
           })}
         </ListWrapper>
       )}
