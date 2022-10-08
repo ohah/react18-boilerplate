@@ -10,10 +10,10 @@ interface TooltipProps {
 }
 const Message = styled.div<TooltipProps>`
   display: none;
-  background-color: #eef3fd;
-  border: #7689fd solid 1px;
+  background-color: #545455;
+  border: #636363 solid 1px;
   border-radius: 5px;
-  color: #505bf0;
+  color: #fff;
   font-size: 9px;
   font-weight: 500;
   height: auto;
@@ -54,19 +54,8 @@ const Message = styled.div<TooltipProps>`
   ${props =>
     props.arrow &&
     css`
-      &:after {
-        border-color: #eef3fd transparent;
-        border-width: 0 6px 8px 6.5px;
-        ${afterStyle(props.placement as never)}
-        border-style: solid;
-        content: '';
-        display: block;
-        position: absolute;
-        width: 0;
-        z-index: 1;
-      }
       &:before {
-        border-color: #7689fd transparent;
+        border-color: #545455 transparent;
         border-width: 0 6px 8px 6.5px;
         ${beforeStyle(props.placement as never)}
         border-style: solid;
@@ -88,20 +77,6 @@ const beforeStyle = (placement: Placement) => {
       return 'left:100%;transform:translateY(-50%) rotate(90deg);top: calc(50%);margin-left:-2px;';
     case 'right':
       return 'right:100%;transform:translateY(-50%) rotate(270deg);top: calc(50%);margin-right:-2px;';
-    default:
-      return '';
-  }
-};
-const afterStyle = (placement: Placement) => {
-  switch (placement) {
-    case 'bottom':
-      return 'left:50%;transform:translateX(-50%);bottom: calc(100% - 1px);';
-    case 'top':
-      return 'left:50%;transform:translateX(-50%) rotate(180deg);top: calc(100% - 1px);';
-    case 'left':
-      return 'left:calc(100% - 1px);transform:translateY(-50%) rotate(90deg);top: calc(50%);margin-left:-2px;';
-    case 'right':
-      return 'right:calc(100% - 1px);transform:translateY(-50%) rotate(270deg);top: calc(50%);margin-right:-2px;';
     default:
       return '';
   }

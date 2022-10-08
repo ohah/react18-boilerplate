@@ -29,7 +29,7 @@ const Home = () => {
   const [isModal, setModal] = useState<boolean>(false);
   const {toast} = useContext(ToastContext);
   const data = [
-    {title: '툴팁', value: 'tooltip'},
+    {title: '툴팁', value: '툴팁'},
     {title: '패널', value: '패널'},
     {title: '드롭다운', value: '드롭다운'},
     {title: '토글', value: '토글'},
@@ -93,7 +93,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('시발', {type: 'info', autoClose: 3000});
+                toast('정보', {type: 'info', autoClose: 3000});
               }}
             >
               info
@@ -101,7 +101,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('시발', {type: 'success', autoClose: 3000});
+                toast('성공', {type: 'success', autoClose: 3000});
               }}
             >
               success
@@ -109,7 +109,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('시발', {type: 'warning', autoClose: 3000});
+                toast('경고', {type: 'warning', autoClose: 3000});
               }}
             >
               warning
@@ -117,7 +117,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('시발', {type: 'error', autoClose: 3000});
+                toast('에러', {type: 'error', autoClose: 3000});
               }}
             >
               error
@@ -125,7 +125,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('시발', {type: 'default', autoClose: 3000});
+                toast('기본', {type: 'default', autoClose: 3000});
               }}
             >
               default

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import styled, {keyframes} from 'styled-components';
 
 interface DropdownListProps {
@@ -84,12 +84,24 @@ const Dropdown = ({value, onChange, defaultValue}: DropdownProps) => {
   const [displayValue, setValue] = useState(defaultValue);
   const [isAnimation, setAnimation] = useState(false);
   const [time, setTime] = useState<ReturnType<typeof setTimeout>>();
-  const selectedValue = (value: string) => {
+  const selectedValue = useCallback((value: string) => {
     setAnimation(false);
     setValue(value);
     onChange(value);
-    return value;
+  }, []);
+
+  const closeDoropdown = (e: MouseEvent) => {
+    e.preventDefault();
+    setAnimation(false);
   };
+
+  useEffect(() => {
+    document.body.addEventListener('click', closeDoropdown);
+    return () => {
+      document.body.addEventListener('click', closeDoropdown);
+    };
+  }, []);
+
   useEffect(() => {
     if (isAnimation === true) {
       clearTimeout(time);
@@ -101,9 +113,10 @@ const Dropdown = ({value, onChange, defaultValue}: DropdownProps) => {
         }, 200),
       );
     }
+    return () => {};
   }, [isAnimation]);
   return (
-    <Wrapper>
+    <Wrapper onClick={e => e.stopPropagation()}>
       <Select isShow={isAnimation} onClick={() => setAnimation(!isAnimation)}>
         <span>{displayValue}</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
