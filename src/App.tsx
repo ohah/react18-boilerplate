@@ -3,7 +3,7 @@ import {ToastContainer} from 'component/toast';
 import reset from 'styled-reset';
 import {createGlobalStyle} from 'styled-components';
 import Home from 'pages/Home';
-import ToastProvider from 'context/ToastContext';
+import {ToastContext, useToastInit} from 'context/ToastContext';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -11,11 +11,11 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <div className="App">
-      <ToastProvider>
+      <ToastContext.Provider value={useToastInit()}>
         <GlobalStyle />
         <Home />
         <ToastContainer />
-      </ToastProvider>
+      </ToastContext.Provider>
     </div>
   );
 }

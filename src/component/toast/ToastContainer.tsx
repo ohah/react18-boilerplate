@@ -32,7 +32,7 @@ export const ToastContainer = () => {
       {queue.map(props => {
         return (
           <Toast key={props.id} {...props}>
-            {props.id}
+            {props.message}
           </Toast>
         );
       })}

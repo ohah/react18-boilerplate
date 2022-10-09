@@ -1,6 +1,4 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import React, {createContext, useState} from 'react';
-
+import {createContext, useState, useContext} from 'react';
 export type TypeOptions = 'info' | 'success' | 'warning' | 'error' | 'default';
 
 export interface ToastProps {
@@ -14,21 +12,22 @@ export interface ToastOption {
   type: TypeOptions;
 }
 
-export const uid = () => {
+const uid = () => {
   return (performance.now().toString(36) + Math.random().toString(36)).replace(/\./g, '');
 };
 
-export const initialValue: ToastProps[] = [];
-export const useToast = () => useState<ToastProps[]>(initialValue);
 export interface ToastContextProps {
   toast: (message: string, options: ToastOption) => void;
   queue: ToastProps[];
-  // addQueue: (queue: ToastProps) => void;
 }
 
 export const ToastContext = createContext<ToastContextProps>({} as ToastContextProps);
 
-const ToastProvider = ({children}: {children: React.ReactNode}) => {
+export const useToast = () => {
+  return useContext(ToastContext);
+};
+
+export const useToastInit = () => {
   const [queue, setQueue] = useState<ToastProps[]>([]);
   const toast = (message: string, options: ToastOption) => {
     const newToast: ToastProps = {
@@ -46,7 +45,8 @@ const ToastProvider = ({children}: {children: React.ReactNode}) => {
       });
     }, options.autoClose);
   };
-  return <ToastContext.Provider value={{toast, queue}}>{children}</ToastContext.Provider>;
+  return {
+    toast,
+    queue,
+  };
 };
-
-export default ToastProvider;

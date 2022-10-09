@@ -45,7 +45,7 @@ const showPageNum = ({
   const [cursor] = [page];
   const totalPage = Math.ceil(totalRows / pageRows);
   const pageArray: number[] = [];
-  for (let i = page; i < page + showPage && i <= totalPage; i++) {
+  for (let i = page; i < page + showPage && i <= totalPage; i += 1) {
     pageArray.push(i);
   }
   return {pageArray, totalPage};

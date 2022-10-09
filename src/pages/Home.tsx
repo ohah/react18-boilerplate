@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Toggle from 'component/Toggle';
 import Pagination from 'component/Pagination';
 import Modal from 'component/Modal';
-import React, {useContext, useState} from 'react';
-import {ToastContext} from 'context/ToastContext';
+import {useContext, useState} from 'react';
+import {useToast} from 'context/ToastContext';
 import Dropdown from 'component/Dropdown';
 
 const TooltipWrapper = styled.div``;
@@ -27,7 +27,7 @@ const Home = () => {
     console.log('page', page);
   };
   const [isModal, setModal] = useState<boolean>(false);
-  const {toast} = useContext(ToastContext);
+  const {toast} = useToast();
   const data = [
     {title: '툴팁', value: '툴팁'},
     {title: '패널', value: '패널'},
@@ -41,6 +41,7 @@ const Home = () => {
   const DropDownOnchange = (value: string) => {
     console.log(value);
   };
+
   return (
     <Grid>
       <Modal isShow={isModal} close={() => setModal(false)}>
