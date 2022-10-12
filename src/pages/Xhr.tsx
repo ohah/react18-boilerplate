@@ -45,7 +45,7 @@ const Home = () => {
         });
       }
     };
-    xhr.open('GET', 'http://localhost:3000/react');
+    xhr.open('GET', 'api/react');
     xhr.send();
   }, []);
   if (isError) {
