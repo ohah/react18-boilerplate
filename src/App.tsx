@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import reactLogo from 'assets/react.svg';
 import 'App.css';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from 'pages/Home';
 import About from 'pages/About';
 import Profile from 'pages/Profile';
@@ -12,7 +12,7 @@ import Fetch from 'pages/Fetch';
 import Axios from 'pages/Axios';
 import ReactQuery from 'pages/ReactQuery';
 import UseSWR from 'pages/UseSWR';
-import {QueryClient, QueryClientProvider} from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 const queryClient = new QueryClient();
 
 function App() {

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 export interface ReactJson {
   dependencies: {
@@ -16,7 +16,7 @@ const Home = () => {
       .then(res => res.json())
       .then(res => setText(res));
   }, []);
-  return <div style={{whiteSpace: 'pre-wrap', padding: '10px'}}>{JSON.stringify(text, null, 2)}</div>;
+  return <div style={{ whiteSpace: 'pre-wrap', padding: '10px' }}>{JSON.stringify(text, null, 2)}</div>;
 };
 
 export default Home;

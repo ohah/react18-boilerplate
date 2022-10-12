@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {ReactJson} from './Fetch';
+import { useEffect, useState } from 'react';
+import { ReactJson } from './Fetch';
 
 interface xhrState<T> {
   isLoading: boolean;
@@ -14,7 +14,7 @@ const Home = () => {
     isError: false,
     data: {},
   });
-  const {isError, isLoading, data} = state;
+  const { isError, isLoading, data } = state;
   useEffect(() => {
     setState(state => {
       return {
@@ -54,7 +54,7 @@ const Home = () => {
   if (isLoading) {
     return <div> 로딩 중 </div>;
   }
-  return <div style={{whiteSpace: 'pre-wrap', padding: '10px'}}>{JSON.stringify(data, null, 2)}</div>;
+  return <div style={{ whiteSpace: 'pre-wrap', padding: '10px' }}>{JSON.stringify(data, null, 2)}</div>;
 };
 
 export default Home;
