@@ -83,7 +83,7 @@ const Home = () => {
             <Toggle active={false} />
           </Tab.Context>
           <Tab.Context index={4}>
-            <Pagination totalRows={300} showPage={10} pageRows={5} page={1} onChange={onChange} />
+            <Pagination total={300} pageLimit={10} current={5} pageSize={1} onChange={onChange} />
           </Tab.Context>
           <Tab.Context index={5}>
             <button type="button" onClick={() => setModal(true)}>
