@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/no-array-index-key */
-import React, {Children, forwardRef, Ref, useMemo, useState} from 'react';
+import React, { Children, forwardRef, Ref, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 interface TabProps {
@@ -71,4 +71,4 @@ const Context = forwardRef((props: TabChildProps, ref: Ref<HTMLDivElement>) => {
 });
 Context.displayName = 'Context';
 
-export {Wrapper, Panel, Context};
+export { Wrapper, Panel, Context };

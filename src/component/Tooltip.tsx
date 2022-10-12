@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import {ReactNode} from 'react';
-import styled, {css} from 'styled-components';
+import { ReactNode } from 'react';
+import styled, { css } from 'styled-components';
 type Placement = 'bottom' | 'left' | 'right' | 'top';
 interface TooltipProps {
   title: string;

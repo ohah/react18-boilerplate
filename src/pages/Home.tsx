@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Toggle from 'component/Toggle';
 import Pagination from 'component/Pagination';
 import Modal from 'component/Modal';
-import {useContext, useState} from 'react';
-import {useToast} from 'context/ToastContext';
+import { useContext, useState } from 'react';
+import { useToast } from 'context/ToastContext';
 import Dropdown from 'component/Dropdown';
 
 const TooltipWrapper = styled.div``;
@@ -27,15 +27,15 @@ const Home = () => {
     console.log('page', page);
   };
   const [isModal, setModal] = useState<boolean>(false);
-  const {toast} = useToast();
+  const { toast } = useToast();
   const data = [
-    {title: '툴팁', value: '툴팁'},
-    {title: '패널', value: '패널'},
-    {title: '드롭다운', value: '드롭다운'},
-    {title: '토글', value: '토글'},
-    {title: '페이지네이션', value: '페이지네이션'},
-    {title: '모달', value: '모달'},
-    {title: '토스트', value: '토스트'},
+    { title: '툴팁', value: '툴팁' },
+    { title: '패널', value: '패널' },
+    { title: '드롭다운', value: '드롭다운' },
+    { title: '토글', value: '토글' },
+    { title: '페이지네이션', value: '페이지네이션' },
+    { title: '모달', value: '모달' },
+    { title: '토스트', value: '토스트' },
   ];
 
   const DropDownOnchange = (value: string) => {
@@ -94,7 +94,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('정보', {type: 'info', autoClose: 3000});
+                toast('정보', { type: 'info', autoClose: 3000 });
               }}
             >
               info
@@ -102,7 +102,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('성공', {type: 'success', autoClose: 3000});
+                toast('성공', { type: 'success', autoClose: 3000 });
               }}
             >
               success
@@ -110,7 +110,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('경고', {type: 'warning', autoClose: 3000});
+                toast('경고', { type: 'warning', autoClose: 3000 });
               }}
             >
               warning
@@ -118,7 +118,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('에러', {type: 'error', autoClose: 3000});
+                toast('에러', { type: 'error', autoClose: 3000 });
               }}
             >
               error
@@ -126,7 +126,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {
-                toast('기본', {type: 'default', autoClose: 3000});
+                toast('기본', { type: 'default', autoClose: 3000 });
               }}
             >
               default

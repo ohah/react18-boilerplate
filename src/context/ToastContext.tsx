@@ -1,4 +1,4 @@
-import {createContext, useState, useContext} from 'react';
+import { createContext, useState, useContext } from 'react';
 export type TypeOptions = 'info' | 'success' | 'warning' | 'error' | 'default';
 
 export interface ToastProps {

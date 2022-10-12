@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import styled, {keyframes} from 'styled-components';
+import React, { useCallback, useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 
 interface DropdownListProps {
   title: string;
@@ -79,7 +79,7 @@ const ListWrapper = styled.ul<SelectState>`
   }
 `;
 
-const Dropdown = ({value, onChange, defaultValue}: DropdownProps) => {
+const Dropdown = ({ value, onChange, defaultValue }: DropdownProps) => {
   const [isOpen, setOpen] = useState(false);
   const [displayValue, setValue] = useState(defaultValue);
   const [isAnimation, setAnimation] = useState(false);

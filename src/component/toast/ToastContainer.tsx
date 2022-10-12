@@ -1,5 +1,5 @@
-import {ToastContext, ToastProps} from 'context/ToastContext';
-import {useContext, useEffect} from 'react';
+import { ToastContext, ToastProps } from 'context/ToastContext';
+import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 
 const color = {
@@ -9,6 +9,7 @@ const color = {
   error: '#f80808',
   default: '#121a85',
 };
+var obj = { foo: 'bar' };
 
 const Wrapper = styled.div`
   position: fixed;
@@ -26,7 +27,7 @@ const Toast = styled.div<ToastProps>`
   border-radius: 10px;
 `;
 export const ToastContainer = () => {
-  const {toast, queue} = useContext(ToastContext);
+  const { toast, queue } = useContext(ToastContext);
   return (
     <Wrapper>
       {queue.map(props => {

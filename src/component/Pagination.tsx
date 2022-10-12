@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 interface PaginationProps {
@@ -48,13 +48,13 @@ const showPageNum = ({
   for (let i = page; i < page + showPage && i <= totalPage; i += 1) {
     pageArray.push(i);
   }
-  return {pageArray, totalPage};
+  return { pageArray, totalPage };
 };
 
-const Pagination = ({pageRows, page, totalRows, showPage, prevButton, lastButton, onChange}: PaginationProps) => {
+const Pagination = ({ pageRows, page, totalRows, showPage, prevButton, lastButton, onChange }: PaginationProps) => {
   const [currentPage, setCurrentPage] = useState<number>(page || 1);
-  const {pageArray, totalPage} = useMemo(() => {
-    return showPageNum({totalRows, pageRows, page: currentPage, showPage});
+  const { pageArray, totalPage } = useMemo(() => {
+    return showPageNum({ totalRows, pageRows, page: currentPage, showPage });
   }, [currentPage]);
   useEffect(() => {
     if (onChange) {
