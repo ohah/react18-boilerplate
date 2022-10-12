@@ -1,4 +1,4 @@
-import axios, { AxiosHeaders } from 'axios';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { ReactJson } from './Fetch';
 const Home = () => {
