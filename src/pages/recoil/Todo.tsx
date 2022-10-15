@@ -1,14 +1,14 @@
-import useTodo from 'store/todo/hooks';
+import useTodo from 'store/recoil/todo/hooks';
 
 const Todo = () => {
-  const { todoState, create, remove, update } = useTodo();
+  const { todoList, create, remove, update } = useTodo();
   return (
     <div>
       <button type="button" onClick={() => create('무야호')}>
         create
       </button>
       <table>
-        {todoState.map(row => {
+        {todoList.map(row => {
           return (
             <tr key={row.id}>
               <td> {row.id} </td>

@@ -7,6 +7,7 @@ const Header = () => {
       <div className={styles.header}>
         <div>
           <Link to="/"> 홈 </Link>
+          <Link to="/recoil"> recoil </Link>
           <Link to="/todo"> Todo </Link>
         </div>
         <div>
