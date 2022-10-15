@@ -16,6 +16,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import rootReducer from 'store';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import Todo from 'pages/todo';
 const queryClient = new QueryClient();
 
 const store = createStore(rootReducer);
@@ -27,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
-            <Route element={<CssInJS />} />
+            <Route path="todo" element={<Todo />} />
             <Route path="xhr" element={<Xhr />} />
             <Route path="fetch" element={<Fetch />} />
             <Route path="axios" element={<Axios />} />
