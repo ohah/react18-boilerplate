@@ -14,17 +14,17 @@ export function todo(state: TodoState[] = initialState, action: ActionType): Tod
     case TodoActionType.CREATE:
       const data = state.map(todo => todo.id);
       const id = data.length === 0 ? 1 : Math.max(...data) + 1;
-      const inputData = [{ id: id, name: action.payload }];
+      const inputData = [{ id: id, name: action.payload.name }];
       return [...state, ...inputData];
     case TodoActionType.DELETE:
-      const remove = state.filter(todo => action.payload !== todo.id);
+      const remove = state.filter(todo => action.payload.id !== todo.id);
       return [...remove];
     case TodoActionType.UPDATE:
       const update = state.map(todo => {
         if (todo.id === action.payload.id) {
-          return (todo = {
+          return {
             ...action.payload,
-          });
+          };
         }
         return todo;
       });

@@ -10,9 +10,9 @@ export const initialState: CounterState = { count: 0 } as CounterState;
 export function counter(state: CounterState = initialState, action: ActionType): CounterState {
   switch (action.type) {
     case CounterActionType.INCREASE:
-      return { count: state.count + 1 };
+      return { count: state.count + action.payload };
     case CounterActionType.DECRESE:
-      return { count: state.count - 1 };
+      return { count: state.count + action.payload };
     case CounterActionType.INCREASE_BY:
       return { count: state.count + action.payload };
     default:

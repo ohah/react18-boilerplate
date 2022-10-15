@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useRecoilCallback, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { TodoState } from './atom';
 
 const useTodo = () => {
@@ -42,7 +42,7 @@ const useTodo = () => {
     [todoList],
   );
   return {
-    todoList: todoList,
+    todoList,
     create,
     remove,
     update,

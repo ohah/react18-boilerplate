@@ -10,9 +10,11 @@ export enum CounterActionType {
 export const counterActions = {
   increase: () => ({
     type: CounterActionType.INCREASE,
+    payload: 1,
   }),
   decrease: () => ({
     type: CounterActionType.DECRESE,
+    payload: -1,
   }),
   increaseBy: (diff: number) => ({
     type: CounterActionType.INCREASE_BY,

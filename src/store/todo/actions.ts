@@ -11,15 +11,24 @@ export enum TodoActionType {
 export const TodoActions = {
   create: (name: string) => ({
     type: TodoActionType.CREATE,
-    payload: name,
+    payload: {
+      id: -1,
+      name: name,
+    },
   }),
   read: () => ({
     type: TodoActionType.READ,
-    paylaod: '',
+    payload: {
+      id: -1,
+      name: '',
+    },
   }),
   delete: (id: number) => ({
     type: TodoActionType.DELETE,
-    payload: id,
+    payload: {
+      id: id,
+      name: '',
+    },
   }),
   update: (data: { id: number; name: string }) => ({
     type: TodoActionType.UPDATE,
