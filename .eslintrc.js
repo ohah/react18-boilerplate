@@ -72,6 +72,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'import/no-duplicates': 'off',
+    'object-curly-spacing': ['error', 'always'],
     'vars-on-top': 'off',
     'no-use-before-define': 'off',
     'import/prefer-defalut-export': 'off',
