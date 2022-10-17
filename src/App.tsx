@@ -1,5 +1,5 @@
 import 'App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Form } from 'react-router-dom';
 import Home from 'pages/Home';
 import Header from 'pages/Header';
 import RecoilHeader from 'pages/recoil/Header';
@@ -17,6 +17,8 @@ import RecoilTodo from 'pages/recoil/Todo';
 import { RecoilRoot } from 'recoil';
 import Counter from 'pages/recoil/Counter';
 import { ToastContext, useToastInit } from 'components/toast/ToastContext';
+import Subimt from 'pages/Submit';
+import Covid from 'pages/Covid';
 const queryClient = new QueryClient();
 
 const store = createStore(rootReducer);
@@ -30,16 +32,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Header />}>
                 <Route index element={<Home />} />
-                <Route path="recoil" element={<RecoilHeader />}>
-                  <Route path="counter" element={<Counter />} />
-                  <Route path="todo" element={<RecoilTodo />} />
-                </Route>
-                <Route path="todo" element={<Todo />} />
-                <Route path="xhr" element={<Xhr />} />
-                <Route path="fetch" element={<Fetch />} />
-                <Route path="axios" element={<Axios />} />
-                <Route path="react-query" element={<ReactQuery />} />
-                <Route path="useSWR" element={<UseSWR />} />
+                <Route path="/Submit" element={<Subimt />} />
+                <Route path="/Covid" element={<Covid />} />
               </Route>
             </Routes>
           </QueryClientProvider>

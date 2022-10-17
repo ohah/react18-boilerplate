@@ -7,7 +7,7 @@ import jsonServer from 'vite-plugin-simple-json-server';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({ fastRefresh: false }),
     jsonServer(),
     {
       ...eslint({

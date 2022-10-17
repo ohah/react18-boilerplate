@@ -7,16 +7,8 @@ const Header = () => {
       <div className={styles.header}>
         <div>
           <Link to="/"> 홈 </Link>
-          <Link to="/recoil"> recoil </Link>
-          <Link to="/todo"> Todo </Link>
-        </div>
-        <div>
-          <Link to="/xhr"> xhr </Link>
-          <Link to="/fetch"> fetch </Link>
-          <Link to="/fetch"> fetch </Link>
-          <Link to="/axios"> axios </Link>
-          <Link to="/react-query"> React-Query </Link>
-          <Link to="/useSWR"> uswSWR </Link>
+          <Link to="/Covid"> 코로나 </Link>
+          <Link to="/Submit"> 폼 </Link>
         </div>
       </div>
       <Outlet />

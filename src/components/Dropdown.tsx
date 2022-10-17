@@ -79,7 +79,7 @@ const ListWrapper = styled.ul<SelectState>`
   }
 `;
 
-const Dropdown = ({ value, onChange, defaultValue }: DropdownProps) => {
+const Dropdown = ({ value, onChange, defaultValue, ...htmlelement }: DropdownProps) => {
   const [isOpen, setOpen] = useState(false);
   const [displayValue, setValue] = useState(defaultValue);
   const [isAnimation, setAnimation] = useState(false);
