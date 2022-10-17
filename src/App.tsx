@@ -14,35 +14,36 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Todo from 'pages/Todo';
 import RecoilTodo from 'pages/recoil/Todo';
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot, useRecoilValue } from 'recoil';
 import Counter from 'pages/recoil/Counter';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ThemeState } from 'store/recoil/theme/atom';
+
 const queryClient = new QueryClient();
 
 const store = createStore(rootReducer);
 
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    background-color: ${({ theme }) => (theme.color === 'dark' ? 'black' : 'white')};
+    color: ${({ theme }) => (theme.color !== 'dark' ? 'black' : 'white')};
+  }
+`;
+
 function App() {
   return (
-    <RecoilRoot>
+    <ThemeProvider theme={useRecoilValue(ThemeState)}>
+      <GlobalStyle />
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <Routes>
             <Route path="/" element={<Header />}>
               <Route index element={<Home />} />
-              <Route path="recoil" element={<RecoilHeader />}>
-                <Route path="counter" element={<Counter />} />
-                <Route path="todo" element={<RecoilTodo />} />
-              </Route>
-              <Route path="todo" element={<Todo />} />
-              <Route path="xhr" element={<Xhr />} />
-              <Route path="fetch" element={<Fetch />} />
-              <Route path="axios" element={<Axios />} />
-              <Route path="react-query" element={<ReactQuery />} />
-              <Route path="useSWR" element={<UseSWR />} />
             </Route>
           </Routes>
         </QueryClientProvider>
       </Provider>
-    </RecoilRoot>
+    </ThemeProvider>
   );
 }
 
