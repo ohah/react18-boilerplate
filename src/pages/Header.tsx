@@ -1,24 +1,55 @@
-import { Link, Outlet } from 'react-router-dom';
-import styles from 'css/Header.module.css';
+import { Link, NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
+const Wrapper = styled.header`
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+  & a {
+    list-style: none;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    align-items: center;
+    text-decoration: none;
+  }
+  & a::after {
+    background: blue;
+    display: block;
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    transform: scaleY(0);
+  }
+  & a.active::after {
+    width: 100%;
+    height: 4px;
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 235ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  & a:visited {
+    color: black;
+  }
+`;
 const Header = () => {
   return (
-    <div className={styles.body}>
-      <div className={styles.header}>
-        <div>
-          <Link to="/"> 홈 </Link>
-        </div>
-        <div>
-          <Link to="/xhr"> xhr </Link>
-          <Link to="/fetch"> fetch </Link>
-          <Link to="/fetch"> fetch </Link>
-          <Link to="/axios"> axios </Link>
-          <Link to="/react-query"> React-Query </Link>
-          <Link to="/useSWR"> uswSWR </Link>
-        </div>
-      </div>
-      <Outlet />
-    </div>
+    <Wrapper>
+      <Link to="/">홈</Link>
+      <NavLink to="/count">Count</NavLink>
+      <NavLink to="/xhr">XHR</NavLink>
+      <NavLink to="/fetch">FETCH</NavLink>
+      <NavLink to="/axios">AXIOS</NavLink>
+      <NavLink to="/react-query">React-Query</NavLink>
+      <NavLink to="/useSWR">useSWR</NavLink>
+    </Wrapper>
   );
 };
 
