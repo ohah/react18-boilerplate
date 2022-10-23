@@ -50,7 +50,9 @@ const Home = () => {
           ㅁㄴㅇㄹ
         </button>
       </Modal>
-      <Button variant="text">테스트</Button>
+      <Button variant="text" onClick={() => console.log('클릭')}>
+        테스트
+      </Button>
       <Button variant="contained">테스트</Button>
       <Button variant="outlined">테스트</Button>
       <div>
@@ -90,51 +92,51 @@ const Home = () => {
             <Pagination total={300} pageLimit={10} current={5} pageSize={1} onChange={onChange} />
           </Tab.Context>
           <Tab.Context index={5}>
-            <button type="button" onClick={() => setModal(true)}>
+            <Button type="button" onClick={() => setModal(true)}>
               모달
-            </button>
+            </Button>
           </Tab.Context>
           <Tab.Context index={6}>
-            <button
+            <Button
               type="button"
               onClick={() => {
                 toast('정보', { type: 'info', autoClose: 3000 });
               }}
             >
               info
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               onClick={() => {
                 toast('성공', { type: 'success', autoClose: 3000 });
               }}
             >
               success
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               onClick={() => {
                 toast('경고', { type: 'warning', autoClose: 3000 });
               }}
             >
               warning
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               onClick={() => {
                 toast('에러', { type: 'error', autoClose: 3000 });
               }}
             >
               error
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               onClick={() => {
                 toast('기본', { type: 'default', autoClose: 3000 });
               }}
             >
               default
-            </button>
+            </Button>
           </Tab.Context>
         </Tab.Wrapper>
       </div>
