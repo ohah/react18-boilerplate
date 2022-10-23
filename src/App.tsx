@@ -1,5 +1,5 @@
 import 'App.css';
-import { ToastContainer } from 'component/toast';
+import { ToastContainer } from 'components/toast';
 import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
 import Home from 'pages/Home';

@@ -1,12 +1,13 @@
-import Tooltip from 'component/Tooltip';
-import * as Tab from 'component/Tab';
+import Tooltip from 'components/Tooltip';
+import * as Tab from 'components/Tab';
 import styled from 'styled-components';
-import Toggle from 'component/Toggle';
-import Pagination from 'component/Pagination';
-import Modal from 'component/Modal';
+import Toggle from 'components/Toggle';
+import Pagination from 'components/Pagination';
+import Modal from 'components/Modal';
 import { useContext, useState } from 'react';
 import { useToast } from 'context/ToastContext';
-import Dropdown from 'component/Dropdown';
+import Dropdown from 'components/Dropdown';
+import Button from 'components/Button';
 
 const TooltipWrapper = styled.div``;
 const Grid = styled.div`
@@ -49,8 +50,11 @@ const Home = () => {
           ㅁㄴㅇㄹ
         </button>
       </Modal>
+      <Button variant="text">테스트</Button>
+      <Button variant="contained">테스트</Button>
+      <Button variant="outlined">테스트</Button>
       <div>
-        <Tab.Wrapper>
+        <Tab.Wrapper defaultIndex={6}>
           <Tab.Panel index={0}>툴팁</Tab.Panel>
           <Tab.Panel index={1}>패널</Tab.Panel>
           <Tab.Panel index={2}>드롭다운</Tab.Panel>
@@ -76,7 +80,7 @@ const Home = () => {
           </Tab.Context>
           <Tab.Context index={1}>컨테스트2</Tab.Context>
           <Tab.Context index={2}>
-            <Dropdown value={data} defaultValue="tooltip" onChange={DropDownOnchange} />
+            <Dropdown value={data} label="Lebel" onChange={DropDownOnchange} />
           </Tab.Context>
           <Tab.Context index={3}>
             <Toggle active />
