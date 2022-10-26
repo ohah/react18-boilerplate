@@ -50,11 +50,6 @@ const Home = () => {
           ㅁㄴㅇㄹ
         </button>
       </Modal>
-      <Button variant="text" onClick={() => console.log('클릭')}>
-        테스트
-      </Button>
-      <Button variant="contained">테스트</Button>
-      <Button variant="outlined">테스트</Button>
       <div>
         <Tab.Wrapper defaultIndex={6}>
           <Tab.Panel index={0}>툴팁</Tab.Panel>

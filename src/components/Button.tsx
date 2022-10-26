@@ -48,6 +48,6 @@ const Wrapper = styled.button<WrapperProps>`
   }}
 `;
 const Button = (props: ButtonProps) => {
-  return <Wrapper {...props}>d</Wrapper>;
+  return <Wrapper {...props}>{props.children}</Wrapper>;
 };
 export default Button;

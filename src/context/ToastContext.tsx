@@ -5,7 +5,6 @@ export interface ToastProps {
   id: string;
   type: TypeOptions;
   message: string;
-  close: boolean;
   autoClose: number;
 }
 export interface ToastOption {
@@ -35,20 +34,11 @@ export const useToastInit = () => {
     const newToast: ToastProps = {
       id: uid(),
       message,
-      close: false,
       ...options,
     };
     setQueue(queue => {
       return [...queue, newToast];
     });
-    setTimeout(() => {
-      setTimeout(() => {
-        setQueue(queue => {
-          const autoClose = queue.filter(q => q.id !== newToast.id);
-          return [...autoClose];
-        });
-      }, 100);
-    }, options.autoClose);
   };
   return {
     toast,
