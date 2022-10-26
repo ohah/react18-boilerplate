@@ -1,5 +1,5 @@
 import { ToastContext, ToastProps } from 'context/ToastContext';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const ShowAnimation = keyframes`
