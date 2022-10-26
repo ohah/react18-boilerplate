@@ -1,34 +1,57 @@
 import { useState } from 'react';
 import reactLogo from 'assets/react.svg';
 import './App.css';
+import Tooltip from 'components/Tooltip';
+import Dropdown, { DropdownData, DropdownValue } from 'components/Dropdown';
+import * as Tab from 'components/Tab';
 
 function App() {
-  const [count, setCount] = useState(0);
-  console.log('asdf');
-  const t = 1;
-  const s = '1';
-
+  const onChange = (value:DropdownValue) => {
+    console.log('상위 컴포넌트', value);
+  }
+  const list:DropdownData[] = [
+    {
+      title:"리액트",
+      value:1,
+    },
+    {
+      title:"Vue",
+      value:2,
+    },
+    {
+      title:"스벨트",
+      value:3,
+    },
+  ]
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        asdfasdf asdfasdf
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      {/* <Tooltip title="asdf">
+        <div> 툴팁 </div>
+      </Tooltip> */}
+      {/* <Dropdown
+        data={list}
+        onChange={onChange}
+      /> */}
+      <Tab.Wrapper>
+        <Tab.List index={0}>
+          리스트 0
+        </Tab.List>
+        <Tab.Panel index={0}>
+          패널 0
+        </Tab.Panel>
+        <Tab.List index={1}>
+          리스트 1
+        </Tab.List>
+        <Tab.Panel index={1}>
+          패널 1
+        </Tab.Panel>
+        <Tab.List index={2}>
+          리스트 2
+        </Tab.List>
+        <Tab.Panel index={2}>
+          패널 2
+        </Tab.Panel>
+      </Tab.Wrapper>
     </div>
   );
 }
