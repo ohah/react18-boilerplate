@@ -26,7 +26,8 @@ const ModalWrapper = styled.div`
 `;
 
 const ModalBody = styled.div`
-  background-color: rgb(255, 255, 255);
+  background-color: ${({ theme }) => (theme.color === 'dark' ? '#141414' : '#eee')};
+  border: 1px solid ${({ theme }) => (theme.color === 'dark' ? '#747474' : '#eee')};
   color: rgba(0, 0, 0, 0.87);
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border-radius: 4px;
