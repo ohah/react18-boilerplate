@@ -10,28 +10,22 @@ type ButtonProps = WrapperProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const textStyle = css`
   color: #1976d2;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
 `;
 const containedStyle = css`
   color: rgb(255, 255, 255);
   background-color: rgb(25, 118, 210);
-  &:hover {
-    background-color: rgb(25, 118, 210, 0.8);
-  }
 `;
-const outlinedStyle: CSSProperties = {
-  border: '1px solid rgba(25, 118, 210, 0.5)',
-  color: '#1976d2',
-};
+const outlinedStyle = css`
+  border: 1px solid rgba(25, 118, 210, 0.5);
+  color: #1976d2;
+`;
 
 const Wrapper = styled.button<WrapperProps>`
   min-width: 64px;
   padding: 6px 16px;
   display: inline-flex;
   justify-content: center;
-  background-color: #fff;
+  background-color: ${({ theme }) => (theme.color === 'dark' ? '#070707' : '#eee')};
   border: 1px solid;
   cursor: pointer;
   border-radius: 2px;

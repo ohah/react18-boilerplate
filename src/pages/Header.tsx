@@ -4,10 +4,35 @@ import { Link, Outlet } from 'react-router-dom';
 import styles from 'css/Header.module.css';
 import { Toggle } from 'components';
 import { useRecoilState } from 'recoil';
-import { ThemeState } from 'store/recoil/theme/atom';
+import { ITheme, ThemeState } from 'store/recoil/theme/atom';
+import styled from 'styled-components';
+
+const NavHeader = styled.header``;
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 0;
+  margin: 0;
+  & ${NavHeader} {
+    height: 60px;
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+  }
+  & ${NavHeader} a {
+    color: ${props => (props.theme.color === 'dark' ? 'white' : 'black')};
+  }
+  & ${NavHeader} a:hover {
+    color: ${props => (props.theme.color === 'dark' ? 'gray' : 'blue')};
+  }
+`;
 
 const Header = () => {
-  const [theme, setTheme] = useRecoilState(ThemeState);
+  const [theme, setTheme] = useRecoilState<ITheme>(ThemeState);
   const onChange = (value: boolean) => {
     setTheme(theme => {
       return {
@@ -17,15 +42,15 @@ const Header = () => {
     });
   };
   return (
-    <div className={styles.body}>
-      <div className={styles.header}>
+    <Wrapper>
+      <NavHeader className={styles.header}>
         <div>
           <Link to="/"> 홈 </Link>
           <Toggle active={theme.color === 'light' ? true : false} onChange={onChange} />
         </div>
-      </div>
+      </NavHeader>
       <Outlet />
-    </div>
+    </Wrapper>
   );
 };
 

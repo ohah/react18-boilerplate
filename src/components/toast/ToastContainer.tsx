@@ -1,4 +1,4 @@
-import { ToastContext, ToastProps } from 'context/ToastContext';
+import { ToastContext, ToastProps } from 'components/toast/ToastContext';
 import { useContext, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 

@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 interface ToggleProps {
   active: boolean;
+  onChange?: (value: boolean) => void;
 }
 
 const Switch = styled.div<ToggleProps>`
-  background-color: brown;
+  background-color: ${props => (props.theme.color === 'dark' ? 'gray' : 'brown')};
   height: 30px;
   width: 50px;
   border-radius: 15px;
@@ -26,6 +27,11 @@ const Switch = styled.div<ToggleProps>`
 `;
 const Toggle = (props: ToggleProps) => {
   const [checked, setChecked] = useState(props.active);
+  useEffect(() => {
+    if (props.onChange) {
+      props.onChange(checked);
+    }
+  }, [checked]);
   return (
     <div>
       <Switch active={checked} onClick={() => setChecked(!checked)}>

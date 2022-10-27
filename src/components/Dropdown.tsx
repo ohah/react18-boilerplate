@@ -32,6 +32,7 @@ const Select = styled.div<SelectState>`
   & svg {
     transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s;
     transform: ${props => (props.isShow ? 'rotate(180deg)' : 'rotate(0deg)')};
+    fill: ${({ theme }) => (theme.color === 'dark' ? 'white' : 'black')};
   }
 `;
 
@@ -68,7 +69,8 @@ const Label = styled.div<SelectState>`
   text-overflow: ellipsis;
   max-width: calc(133% - 24px);
   position: absolute;
-  background: white;
+  background-color: ${({ theme }) => (theme.color === 'dark' ? 'black' : 'white')};
+  color: ${({ theme }) => (theme.color !== 'dark' ? 'black' : 'white')};
   left: 0;
   top: 0;
   z-index: 1;
@@ -85,9 +87,9 @@ const ListWrapper = styled.ul<SelectState>`
   border-radius: 5px;
   top: calc(100% + 5px);
   z-index: 1;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 1px 0.5px 0.2px 0 #ccc;
+  background-color: ${({ theme }) => (theme.color === 'dark' ? 'black' : 'white')};
+  border: 1px solid ${({ theme }) => (theme.color === 'dark' ? '#888' : '#ccc')};
+  box-shadow: 1px 0.5px 0.2px 0 ${({ theme }) => (theme.color === 'dark' ? '#888' : '#ccc')};
   transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
   left: 0;
   animation: ${props => (props.isShow === true ? ShowAnimation : HideAnimation)} 0.2s linear;
@@ -95,7 +97,7 @@ const ListWrapper = styled.ul<SelectState>`
   animation-fill-mode: forwards;
 
   & ${List}:hover {
-    background-color: #eee;
+    background-color: ${({ theme }) => (theme.color === 'dark' ? '#888' : '#eee')};
   }
   & ${List} {
     background-color: transparent;

@@ -19,7 +19,7 @@ interface ActiveProps {
 
 const TabHeader = styled.div`
   display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid ${props => (props.theme.color === 'dark' ? 'rgb(97, 97, 97)' : 'rgba(0, 0, 0, 0.12)')};
   position: relative;
 `;
 const TabButton = styled.div`
@@ -30,7 +30,7 @@ const TabButton = styled.div`
   justify-content: center;
   &.active {
     /* border-bottom: 2px solid #1976d2; */
-    color: #1976d2;
+    color: ${props => (props.theme.color === 'dark' ? '#3093f7' : '#1976d2')};
   }
 `;
 const TabContextWrapper = styled.div`
@@ -50,10 +50,9 @@ const TabWrapper = styled.div`
   justify-content: center;
   box-sizing: content-box;
   padding: 24px;
-  background-color: rgb(255, 255, 255);
+  background-color: ${props => (props.theme.color === 'dark' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)')};
   border-style: solid;
-  border-color: rgb(231, 235, 240);
-  border-image: initial;
+  border-color: ${props => (props.theme.color === 'dark' ? 'rgb(97, 97, 97)' : 'rgb(231, 235, 240)')};
 `;
 
 const TabActive = styled.span<ActiveProps>`
