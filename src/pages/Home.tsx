@@ -46,12 +46,12 @@ const Home = () => {
   return (
     <Grid>
       <Modal isShow={isModal} close={() => setModal(false)}>
-        <button type="button" onClick={() => setModal(false)}>
-          ㅁㄴㅇㄹ
-        </button>
+        <Button type="button" onClick={() => setModal(false)}>
+          모달창 닫기
+        </Button>
       </Modal>
       <div>
-        <Tab.Wrapper defaultIndex={6}>
+        <Tab.Wrapper defaultIndex={5}>
           <Tab.Panel index={0}>툴팁</Tab.Panel>
           <Tab.Panel index={1}>패널</Tab.Panel>
           <Tab.Panel index={2}>드롭다운</Tab.Panel>
