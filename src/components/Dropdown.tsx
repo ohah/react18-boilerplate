@@ -50,7 +50,7 @@ const HideAnimation = keyframes`
     display:none;
   }
 `;
-const List = styled.ul`div`;
+const List = styled.ul``;
 const ListWrapper = styled.ul<SelectState>`
   position: absolute;
   min-width: 5rem;

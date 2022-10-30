@@ -18,7 +18,7 @@ import { RecoilRoot } from 'recoil';
 import Counter from 'pages/recoil/Counter';
 import { ToastContext, useToastInit } from 'components/toast/ToastContext';
 import Subimt from 'pages/Submit';
-import Covid from 'pages/Covid';
+import Forecast from 'pages/Forecast';
 const queryClient = new QueryClient();
 
 const store = createStore(rootReducer);
@@ -32,8 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Header />}>
                 <Route index element={<Home />} />
-                <Route path="/Submit" element={<Subimt />} />
-                <Route path="/Covid" element={<Covid />} />
+                <Route path="/ForeCast" element={<Forecast />} />
               </Route>
             </Routes>
           </QueryClientProvider>
