@@ -11,6 +11,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { ThemeState } from 'store/recoil/theme/atom';
 import { ToastContainer } from 'components/toast';
 import { ToastContext, useToastInit } from 'components/toast/ToastContext';
+import Todo from 'pages/recoil/Todo';
 
 const queryClient = new QueryClient();
 
@@ -32,7 +33,8 @@ function App() {
           <QueryClientProvider client={queryClient}>
             <Routes>
               <Route path="/" element={<Header />}>
-                <Route index element={<Home />} />
+                <Route element={<Home />} />
+                <Route index element={<Todo />} />
               </Route>
             </Routes>
             <ToastContainer />

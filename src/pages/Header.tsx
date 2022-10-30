@@ -43,11 +43,9 @@ const Header = () => {
   };
   return (
     <Wrapper>
-      <NavHeader className={styles.header}>
-        <div>
-          <Link to="/"> 홈 </Link>
-          <Toggle active={theme.color === 'light' ? true : false} onChange={onChange} />
-        </div>
+      <NavHeader>
+        <Link to="/"> 홈 </Link>
+        <Toggle active={theme.color === 'light' ? true : false} onChange={onChange} />
       </NavHeader>
       <Outlet />
     </Wrapper>

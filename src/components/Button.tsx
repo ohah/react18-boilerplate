@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';
 
 interface WrapperProps {

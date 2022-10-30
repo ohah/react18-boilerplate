@@ -1,7 +1,14 @@
+import { useEffect } from 'react';
+import { ITodoState } from 'store/recoil/todo/atom';
 import useTodo from 'store/recoil/todo/hooks';
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 const Todo = () => {
-  const { todoList, create, remove, update } = useTodo();
+  const { todoList, create, remove, update, readTodo } = useTodo();
+  useEffect(() => {
+    readTodo();
+  }, []);
   return (
     <div>
       <button type="button" onClick={() => create('Hello')}>
