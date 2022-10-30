@@ -7,7 +7,7 @@ const Header = () => {
       <div className={styles.header}>
         <div>
           <Link to="/"> 홈 </Link>
-          <Link to="/Forecast"> 코로나 </Link>
+          <Link to="/Forecast"> 교통흐름 </Link>
         </div>
       </div>
       <Outlet />

@@ -102,7 +102,7 @@ const Forecast = () => {
         data.data.list.map(row => {
           return (
             <ForeCastColumn key={row.sdate}>
-              <div>날짜</div>
+              <div>시간</div>
               <div>{row.sdate}</div>
               <div>전국교통량</div>
               <div>{row.cjunkook}</div>
