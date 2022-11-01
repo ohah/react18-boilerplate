@@ -9,27 +9,30 @@ interface DropdownListProps {
 interface DropdownProps {
   value: DropdownListProps[];
   onChange: (value: string) => void;
-  defaultValue: string;
+  defaultValue?: string;
+  label: string;
 }
 
 const Wrapper = styled.div`
   position: relative;
+  padding: 16.5px 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 120px;
 `;
 interface SelectState {
   isShow: boolean;
 }
 
 const Select = styled.div<SelectState>`
-  padding: 0.25rem 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   & svg {
     transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s;
     transform: ${props => (props.isShow ? 'rotate(180deg)' : 'rotate(0deg)')};
+    fill: ${({ theme }) => (theme.color === 'dark' ? 'white' : 'black')};
   }
 `;
 
@@ -51,37 +54,86 @@ const HideAnimation = keyframes`
   }
 `;
 const List = styled.ul``;
+const Label = styled.div<SelectState>`
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  letter-spacing: 0.00938em;
+  padding: 0 3px;
+  position: relative;
+  display: block;
+  transform-origin: top left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(133% - 24px);
+  position: absolute;
+  background-color: ${({ theme }) => (theme.color === 'dark' ? 'black' : 'white')};
+  color: ${({ theme }) => (theme.color !== 'dark' ? 'black' : 'white')};
+  left: 0;
+  top: 0;
+  z-index: 1;
+  pointer-events: auto;
+  user-select: none;
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+    max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  transform: ${props =>
+    props.isShow === true ? 'translate(8px, -10px) scale(0.75);' : 'translate(14px, 16px) scale(1);'};
+`;
 const ListWrapper = styled.ul<SelectState>`
   position: absolute;
   min-width: 5rem;
   border-radius: 5px;
   top: calc(100% + 5px);
   z-index: 1;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 1px 0.5px 0.2px 0 #ccc;
+  background-color: ${({ theme }) => (theme.color === 'dark' ? 'black' : 'white')};
+  border: 1px solid ${({ theme }) => (theme.color === 'dark' ? '#888' : '#ccc')};
+  box-shadow: 1px 0.5px 0.2px 0 ${({ theme }) => (theme.color === 'dark' ? '#888' : '#ccc')};
   transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
   left: 0;
   animation: ${props => (props.isShow === true ? ShowAnimation : HideAnimation)} 0.2s linear;
   transform-origin: top center;
   animation-fill-mode: forwards;
+
   & ${List}:hover {
-    background-color: #eee;
+    background-color: ${({ theme }) => (theme.color === 'dark' ? '#888' : '#eee')};
   }
   & ${List} {
+    background-color: transparent;
+    outline: 0px;
+    min-width: 120px;
+    border: 0px;
+    margin: 0px;
+    border-radius: 0px;
     cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    color: inherit;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    min-height: 48px;
+    padding: 6px 16px;
+    box-sizing: border-box;
     white-space: nowrap;
-    border-bottom: 1px solid #ccc;
-    padding: 0.27rem 0.75rem;
   }
   & ${List}:last-child {
     border-bottom: 0;
   }
 `;
 
-const Dropdown = ({ value, onChange, defaultValue, ...htmlelement }: DropdownProps) => {
+const Dropdown = ({ value, onChange, defaultValue, label }: DropdownProps) => {
   const [isOpen, setOpen] = useState(false);
-  const [displayValue, setValue] = useState(defaultValue);
+  const [displayValue, setValue] = useState(defaultValue || '');
   const [isAnimation, setAnimation] = useState(false);
   const [time, setTime] = useState<ReturnType<typeof setTimeout>>();
   const selectedValue = useCallback((value: string) => {
@@ -118,6 +170,7 @@ const Dropdown = ({ value, onChange, defaultValue, ...htmlelement }: DropdownPro
   return (
     <Wrapper onClick={e => e.stopPropagation()}>
       <Select isShow={isAnimation} onClick={() => setAnimation(!isAnimation)}>
+        <Label isShow={isAnimation || displayValue !== ''}> {label} </Label>
         <span>{displayValue}</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />

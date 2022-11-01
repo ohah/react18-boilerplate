@@ -1,43 +1,34 @@
 import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
-import { TodoState } from './atom';
+import { TodoState, ITodoState } from 'store/recoil/todo/atom';
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 const useTodo = () => {
   const [todoList, setTodo] = useRecoilState(TodoState);
 
+  const readTodo = async () => {
+    const { data } = await axios.get<ITodoState[]>(`/api/todo`);
+    setTodo(data);
+  };
   const create = useCallback(
-    (name: string) => {
-      setTodo(state => {
-        const data = state.map(todo => todo.id);
-        const id = data.length === 0 ? 1 : Math.max(...data) + 1;
-        const inputData = [{ id: id, name: name }];
-        return [...state, ...inputData];
-      });
+    async (name: string) => {
+      await axios.post<ITodoState[]>(`/api/todo`, { name });
+      readTodo();
     },
     [todoList],
   );
   const remove = useCallback(
-    (id: number) => {
-      setTodo(state => {
-        return [...state.filter(todo => id !== todo.id)];
-      });
+    async (id: number) => {
+      await axios.delete<ITodoState[]>(`/api/todo/${id}`);
+      readTodo();
     },
     [todoList],
   );
   const update = useCallback(
-    ({ id, name }: { id: number; name: string }) => {
-      setTodo(state => {
-        const update = state.map(todo => {
-          if (todo.id === id) {
-            return {
-              ...todo,
-              name: name,
-            };
-          }
-          return todo;
-        });
-        return [...update];
-      });
+    async ({ id, name }: { id: number; name: string }) => {
+      await axios.put<ITodoState[]>(`/api/todo/${id}`, { name });
+      readTodo();
     },
     [todoList],
   );
@@ -46,6 +37,7 @@ const useTodo = () => {
     create,
     remove,
     update,
+    readTodo,
   };
 };
 

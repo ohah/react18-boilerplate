@@ -19,6 +19,7 @@ const uid = () => {
 export interface ToastContextProps {
   toast: (message: string, options: ToastOption) => void;
   queue: ToastProps[];
+  setQueue: React.Dispatch<React.SetStateAction<ToastProps[]>>;
 }
 
 export const ToastContext = createContext<ToastContextProps>({} as ToastContextProps);
@@ -38,15 +39,10 @@ export const useToastInit = () => {
     setQueue(queue => {
       return [...queue, newToast];
     });
-    setTimeout(() => {
-      setQueue(queue => {
-        const autoClose = queue.filter(q => q.id !== newToast.id);
-        return [...autoClose];
-      });
-    }, options.autoClose);
   };
   return {
     toast,
     queue,
+    setQueue,
   };
 };

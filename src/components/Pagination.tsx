@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import paginationCalculator, { IPageCalculatorOptions } from 'pagination-calculator2';
 import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
@@ -13,6 +14,7 @@ const Button = styled.button`
   width: 45px;
   display: inline-flex;
   align-items: center;
+  color: ${({ theme }) => (theme.color !== 'dark' ? 'black' : 'white')};
   justify-content: center;
   cursor: pointer;
 `;
@@ -20,7 +22,11 @@ const Button = styled.button`
 const PaginationWrapper = styled.div`
   margin: 0 auto;
   & ${Button}.active {
-    background-color: #b5b5b8;
+    border-radius: 5px;
+    background-color: ${({ theme }) => (theme.color === 'dark' ? '#666' : '#eee')};
+  }
+  & svg {
+    fill: ${({ theme }) => (theme.color !== 'dark' ? 'black' : 'white')};
   }
   display: flex;
   align-items: center;
@@ -58,11 +64,11 @@ const Pagination = ({ total, current, pageSize, pageLimit, onChange }: Paginatio
           <path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z" />
         </svg>
       </Button>
-      {pages.map(num => {
+      {pages.map((num, i) => {
         return (
           <Button
             type="button"
-            key={num}
+            key={`${num}-${i}`}
             className={num === currentPage ? 'active' : ''}
             onClick={() => {
               if (typeof num === 'number') {

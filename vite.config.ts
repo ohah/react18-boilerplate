@@ -17,4 +17,14 @@ export default defineConfig({
     },
     tsconfigPaths(),
   ],
+  server: {
+    proxy: {
+      '/github': {
+        target: 'https://github.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ''),
+        secure: false,
+      },
+    },
+  },
 });
