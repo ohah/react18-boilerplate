@@ -1,4 +1,4 @@
-import Tooltip from 'components/Tooltip';
+// import Tooltip from 'components/Tooltip';
 import * as Tab from 'components/Tab';
 import styled from 'styled-components';
 import Toggle from 'components/Toggle';
@@ -8,6 +8,8 @@ import { useContext, useState } from 'react';
 import { useToast } from 'context/ToastContext';
 import Dropdown from 'components/Dropdown';
 import Button from 'components/Button';
+
+import { Tooltip } from 'components/myComponents/Tooltip';
 
 const TooltipWrapper = styled.div``;
 const Grid = styled.div`
@@ -44,98 +46,103 @@ const Home = () => {
   };
 
   return (
-    <Grid>
-      <Modal isShow={isModal} close={() => setModal(false)}>
-        <button type="button" onClick={() => setModal(false)}>
-          ㅁㄴㅇㄹ
-        </button>
-      </Modal>
-      <div>
-        <Tab.Wrapper defaultIndex={6}>
-          <Tab.Panel index={0}>툴팁</Tab.Panel>
-          <Tab.Panel index={1}>패널</Tab.Panel>
-          <Tab.Panel index={2}>드롭다운</Tab.Panel>
-          <Tab.Panel index={3}>토글</Tab.Panel>
-          <Tab.Panel index={4}>페이지네이션</Tab.Panel>
-          <Tab.Panel index={5}>모달</Tab.Panel>
-          <Tab.Panel index={6}>토스트</Tab.Panel>
-          <Tab.Context index={0}>
-            <TooltipWrapper>
-              <Tooltip title="위" placement="top">
-                top
-              </Tooltip>
-              <Tooltip title="아래" placement="bottom" arrow>
-                bottom
-              </Tooltip>
-              <Tooltip title="왼쪽" placement="left" arrow>
-                left
-              </Tooltip>
-              <Tooltip title="오른쪽" placement="right">
-                right
-              </Tooltip>
-            </TooltipWrapper>
-          </Tab.Context>
-          <Tab.Context index={1}>컨테스트2</Tab.Context>
-          <Tab.Context index={2}>
-            <Dropdown value={data} label="Lebel" onChange={DropDownOnchange} />
-          </Tab.Context>
-          <Tab.Context index={3}>
-            <Toggle active />
-            <Toggle active={false} />
-          </Tab.Context>
-          <Tab.Context index={4}>
-            <Pagination total={300} pageLimit={10} current={5} pageSize={1} onChange={onChange} />
-          </Tab.Context>
-          <Tab.Context index={5}>
-            <Button type="button" onClick={() => setModal(true)}>
-              모달
-            </Button>
-          </Tab.Context>
-          <Tab.Context index={6}>
-            <Button
-              type="button"
-              onClick={() => {
-                toast('정보', { type: 'info', autoClose: 3000 });
-              }}
-            >
-              info
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                toast('성공', { type: 'success', autoClose: 3000 });
-              }}
-            >
-              success
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                toast('경고', { type: 'warning', autoClose: 3000 });
-              }}
-            >
-              warning
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                toast('에러', { type: 'error', autoClose: 3000 });
-              }}
-            >
-              error
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                toast('기본', { type: 'default', autoClose: 3000 });
-              }}
-            >
-              default
-            </Button>
-          </Tab.Context>
-        </Tab.Wrapper>
-      </div>
-    </Grid>
+    <div>
+      {/* <Grid>
+        <Modal isShow={isModal} close={() => setModal(false)}>
+          <button type="button" onClick={() => setModal(false)}>
+            ㅁㄴㅇㄹ
+          </button>
+        </Modal>
+        <div>
+          <Tab.Wrapper defaultIndex={6}>
+            <Tab.Panel index={0}>툴팁</Tab.Panel>
+            <Tab.Panel index={1}>패널</Tab.Panel>
+            <Tab.Panel index={2}>드롭다운</Tab.Panel>
+            <Tab.Panel index={3}>토글</Tab.Panel>
+            <Tab.Panel index={4}>페이지네이션</Tab.Panel>
+            <Tab.Panel index={5}>모달</Tab.Panel>
+            <Tab.Panel index={6}>토스트</Tab.Panel>
+            <Tab.Context index={0}>
+              <TooltipWrapper>
+                <Tooltip title="위" placement="top">
+                  top
+                </Tooltip>
+                <Tooltip title="아래" placement="bottom" arrow>
+                  bottom
+                </Tooltip>
+                <Tooltip title="왼쪽" placement="left" arrow>
+                  left
+                </Tooltip>
+                <Tooltip title="오른쪽" placement="right">
+                  right
+                </Tooltip>
+              </TooltipWrapper>
+            </Tab.Context>
+            <Tab.Context index={1}>컨테스트2</Tab.Context>
+            <Tab.Context index={2}>
+              <Dropdown value={data} label="Lebel" onChange={DropDownOnchange} />
+            </Tab.Context>
+            <Tab.Context index={3}>
+              <Toggle active />
+              <Toggle active={false} />
+            </Tab.Context>
+            <Tab.Context index={4}>
+              <Pagination total={300} pageLimit={10} current={5} pageSize={1} onChange={onChange} />
+            </Tab.Context>
+            <Tab.Context index={5}>
+              <Button type="button" onClick={() => setModal(true)}>
+                모달
+              </Button>
+            </Tab.Context>
+            <Tab.Context index={6}>
+              <Button
+                type="button"
+                onClick={() => {
+                  toast('정보', { type: 'info', autoClose: 3000 });
+                }}
+              >
+                info
+              </Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  toast('성공', { type: 'success', autoClose: 3000 });
+                }}
+              >
+                success
+              </Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  toast('경고', { type: 'warning', autoClose: 3000 });
+                }}
+              >
+                warning
+              </Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  toast('에러', { type: 'error', autoClose: 3000 });
+                }}
+              >
+                error
+              </Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  toast('기본', { type: 'default', autoClose: 3000 });
+                }}
+              >
+                default
+              </Button>
+            </Tab.Context>
+          </Tab.Wrapper>
+        </div>
+      </Grid> */}
+      <Tooltip text="이것은 툴팁입니다.">
+        <div>버튼</div>
+      </Tooltip>
+    </div>
   );
 };
 
