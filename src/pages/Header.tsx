@@ -49,6 +49,7 @@ const Header = () => {
       <NavLink to="/axios">AXIOS</NavLink>
       <NavLink to="/react-query">React-Query</NavLink>
       <NavLink to="/useSWR">useSWR</NavLink>
+      <NavLink to="/param">Param</NavLink>
     </Wrapper>
   );
 };

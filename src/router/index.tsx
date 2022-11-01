@@ -3,6 +3,7 @@ import Axios from 'pages/Axios';
 import Counter from 'pages/Counter';
 import Fetch from 'pages/Fetch';
 import Home from 'pages/Home';
+import Param from 'pages/Param';
 import ReactQuery from 'pages/ReactQuery';
 import Root from 'pages/Root';
 import UseSWR from 'pages/UseSWR';
@@ -19,6 +20,9 @@ export const router = createBrowserRouter(
       <Route path="/axios" element={<Axios />} />
       <Route path="/react-query" element={<ReactQuery />} />
       <Route path="/useSWR" element={<UseSWR />} />
+      <Route path="/param" element={<Param />}>
+        <Route path="/param/:param" element={<Param />} />
+      </Route>
     </Route>,
   ),
 );
