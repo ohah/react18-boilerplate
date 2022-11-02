@@ -29,7 +29,7 @@ export const Content = styled.div`
   cursor: pointer;
   background-color: royalblue;
 
-  &:hover ${Message} {
+  &:hover + ${Message} {
     display: block;
   }
 `;
