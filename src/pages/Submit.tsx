@@ -60,7 +60,7 @@ const Submit = () => {
         </div>
         <div>
           <span>카테고리</span>
-          <Dropdown value={category} defaultValue="프로그래밍" onChange={categoryChange} />
+          <Dropdown value={category} defaultValue="프로그래밍" onChange={categoryChange} label="프로그래밍" />
         </div>
         <div>
           <span>내용</span>
