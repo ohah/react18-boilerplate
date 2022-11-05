@@ -35,7 +35,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Header />}>
                 <Route element={<Home />} />
-                <Route index element={<Submit />} />
+                <Route index element={<Todo />} />
               </Route>
             </Routes>
             <ToastContainer />
