@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-interface DropdownListProps {
+export interface DropdownListProps {
   title: string;
   value: string;
 }
 
-interface DropdownProps {
+export interface DropdownProps {
   value: DropdownListProps[];
   onChange: (value: string) => void;
   defaultValue?: string;
@@ -143,7 +143,6 @@ const Dropdown = ({ value, onChange, defaultValue, label }: DropdownProps) => {
   }, []);
 
   const closeDropdown = (e: MouseEvent) => {
-    e.preventDefault();
     setAnimation(false);
   };
 

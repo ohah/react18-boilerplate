@@ -12,6 +12,7 @@ import { ThemeState } from 'store/recoil/theme/atom';
 import { ToastContainer } from 'components/toast';
 import { ToastContext, useToastInit } from 'components/toast/ToastContext';
 import Todo from 'pages/recoil/Todo';
+import Submit from 'pages/Submit';
 
 const queryClient = new QueryClient();
 
@@ -34,7 +35,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Header />}>
                 <Route element={<Home />} />
-                <Route index element={<Todo />} />
+                <Route index element={<Submit />} />
               </Route>
             </Routes>
             <ToastContainer />
