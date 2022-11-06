@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "axios": "^1.1.2",
+    "i": "^0.3.7",
+    "jwt-decode": "^3.1.2",
+    "npm": "^8.19.3",
     "pagination-calculator2": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,6 +30,9 @@
   },
   "devDependencies": {
     "@rollup/plugin-eslint": "^8.0.2",
+    "@types/gapi": "^0.0.43",
+    "@types/gapi.auth2": "^0.0.56",
+    "@types/google.accounts": "^0.0.2",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/react-query": "^1.2.9",

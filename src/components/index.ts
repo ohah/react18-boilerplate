@@ -4,4 +4,5 @@ export { default as Dropdown } from 'components/Dropdown';
 export { default as Pagination } from 'components/Pagination';
 export * from 'components/Tab';
 export { default as Toggle } from 'components/Toggle';
-export { default as Tooltip } from 'components/Modal';
+export { default as Tooltip } from 'components/Tooltip';
+export { default as Button } from 'components/Button';
