@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import { googleAuthState } from 'store/recoil/google/atom';
 import jwt_decode from 'jwt-decode';
 
-interface IGoogleJWT {
+export interface IGoogleJWT {
   aud: string;
   azp: string;
   email: string;
