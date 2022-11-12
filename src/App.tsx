@@ -10,17 +10,27 @@ import ToastContainer from 'components/toast/ToastContainer';
 import { RouterProvider } from 'react-router-dom';
 import { router } from 'routes/root';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
+import { createStore } from 'redux';
+import rootReducer from 'store';
+import { Provider } from 'react-redux';
 const queryClient = new QueryClient();
 export const TestContext = createContext({ toast: '토스트' });
 
+const store = createStore(rootReducer);
+
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ToastContext.Provider value={useToastInit()}>
-        <RouterProvider router={router} />
-        <ToastContainer />
-      </ToastContext.Provider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <RecoilRoot>
+        <QueryClientProvider client={queryClient}>
+          <ToastContext.Provider value={useToastInit()}>
+            <RouterProvider router={router} />
+            <ToastContainer />
+          </ToastContext.Provider>
+        </QueryClientProvider>
+      </RecoilRoot>
+    </Provider>
   );
 }
 
