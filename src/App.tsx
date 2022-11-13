@@ -16,8 +16,8 @@ const store = createStore(rootReducer);
 function App() {
   return (
     <RecoilRoot>
-      <ToastContext.Provider value={useToastInit()}>
-        <Provider store={store}>
+      <Provider store={store}>
+        <ToastContext.Provider value={useToastInit()}>
           <QueryClientProvider client={queryClient}>
             <Routes>
               <Route path="/" element={<Header />}>
@@ -26,8 +26,8 @@ function App() {
               </Route>
             </Routes>
           </QueryClientProvider>
-        </Provider>
-      </ToastContext.Provider>
+        </ToastContext.Provider>
+      </Provider>
     </RecoilRoot>
   );
 }

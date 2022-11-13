@@ -18,19 +18,21 @@ export const useKakao = () => {
     f.append('code', code);
     // f.append('response_type', 'code');
     f.append('grant_type', 'authorization_code');
-    f.append('client_id', 'f04f16218867b9f1dcfa3b70dc3813ff');
+    f.append('client_id', import.meta.env.VITE_KAKAO_CLIENT_ID);
     f.append('redirect_uri', 'http://localhost:5173/');
     axios<IKakaoToken>({
-      url: `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=f04f16218867b9f1dcfa3b70dc3813ff&redirect_url=http://localhost:5173/&response_type=code&code=${code}`,
+      url: `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${
+        import.meta.env.VITE_KAKAO_CLIENT_ID
+      }&redirect_url=http://localhost:5173/&response_type=code&code=${code}`,
       method: 'post',
     }).then(async res => {
       setKToken(res.data);
-      await (window as any).Kakao.Auth.setAccessToken(res.data.access_token);
+      await Kakao.Auth.setAccessToken(res.data.access_token);
       await getUser();
     });
   }
   const getUser = () => {
-    (window as any).Kakao.API.request({
+    Kakao.API.request({
       url: '/v2/user/me',
     })
       .then((response: IKakaoUser) => {
@@ -41,17 +43,14 @@ export const useKakao = () => {
           },
         });
       })
-      .catch(function (error: any) {
+      .catch((error: any) => {
         console.log(error);
       });
   };
   const onLogin = () => {
-    (window as any).Kakao.Auth.authorize({
+    Kakao.Auth.authorize({
       redirectUri: 'http://localhost:5173/',
-      // client_id: 'f04f16218867b9f1dcfa3b70dc3813ff',
-      // response_type: 'code',
     });
-    // console.log('onLogin', login, params);
   };
   return {
     isLogin: kAuth.isLogin,

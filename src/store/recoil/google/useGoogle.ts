@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 /* eslint-disable import/prefer-default-export */
-// import google from 'google-one-tap';
 import { useRecoilState } from 'recoil';
 import { googleAuthState } from 'store/recoil/google/atom';
 import jwt_decode from 'jwt-decode';
@@ -26,10 +25,9 @@ export const useGoogle = () => {
   const [gAuth, setGAuth] = useRecoilState(googleAuthState);
   const init = () => {
     google.accounts.id.initialize({
-      client_id: '40957789666-126lt75vbca60rbr50if51s7j9o05kfu.apps.googleusercontent.com',
+      client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
 
       callback: res => {
-        console.log('res', res);
         const t = jwt_decode<IGoogleJWT>(res.credential);
         setGAuth(gauth => {
           return {
@@ -47,10 +45,12 @@ export const useGoogle = () => {
 
   const render = async (element: HTMLElement) => {
     await init();
-    google.accounts.id.renderButton(
-      element,
-      { type: 'standard', theme: 'outline', size: 'large', text: 'continue_with' }, // customization attributes
-    );
+    google.accounts.id.renderButton(element, {
+      type: 'standard',
+      theme: 'outline',
+      size: 'large',
+      text: 'continue_with',
+    });
     google.accounts.id.prompt(moment => {
       console.log('moment', moment);
     });

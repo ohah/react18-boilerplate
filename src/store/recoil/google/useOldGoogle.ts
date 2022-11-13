@@ -26,7 +26,7 @@ export const useOldGoogle = () => {
     gapi.load('auth2', () => {
       gapi.auth2
         .init({
-          client_id: '40957789666-126lt75vbca60rbr50if51s7j9o05kfu.apps.googleusercontent.com',
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
           scope: 'profile',
         })
         .then(res => {

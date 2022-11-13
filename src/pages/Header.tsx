@@ -52,21 +52,15 @@ const Header = () => {
   const { isLogin, user, onLogin } = useKakao();
   const newGoogle = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   console.log('누야호');
-  //   if (newGoogle.current) {
-  //     console.log('실행');
-  //     render(newGoogle.current);
-  //   }
-  // }, [newGoogle]);
-  // const { isLogin, user, render } = useGoogle();
+  useEffect(() => {
+    if (newGoogle.current) {
+      render(newGoogle.current);
+    }
+  }, [newGoogle]);
+  const { isLogin: isGoogleLogin, user: isGoogleUser, render } = useGoogle();
 
-  // useEffect(() => {
-  //   if (newGoogle.current) {
-  //     render(newGoogle.current);
-  //   }
-  // }, []);
   console.log('ref', newGoogle);
+  console.log('import', import.meta.env);
   return (
     <Wrapper>
       <NavHeader>
@@ -78,6 +72,7 @@ const Header = () => {
         <div ref={newGoogle}>너는바본가</div>
       </NavHeader>
       {JSON.stringify(user)}
+      {isGoogleLogin && '로그인 중'}
       <Outlet />
     </Wrapper>
   );

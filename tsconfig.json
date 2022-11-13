@@ -16,7 +16,10 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "types": ["google.accounts"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": ["google.accounts","gapi", "gapi.auth2"],
     "paths": {
       "*": ["src/*"]
     }
