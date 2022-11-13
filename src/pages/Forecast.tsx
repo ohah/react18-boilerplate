@@ -270,14 +270,12 @@ const Forecast = () => {
         data.data.list.map(row => {
           return (
             <ForeCastColumn key={row.sdate}>
-              {Object.keys(foreCastName).map(name => {
-                return (
-                  <>
-                    <div>{foreCastName[name]}</div>
-                    <div> {row[name]} </div>
-                  </>
-                );
-              })}
+              {Object.keys(foreCastName).map(name => (
+                <>
+                  <div>{foreCastName[name]}</div>
+                  <div> {row[name]} </div>
+                </>
+              ))}
             </ForeCastColumn>
           );
         })}
