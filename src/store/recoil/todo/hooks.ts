@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { TodoState, ITodoState } from 'store/recoil/todo/atom';
+
 import axios from 'axios';
-import { useQuery } from 'react-query';
 
 const useTodo = () => {
   const [todoList, setTodo] = useRecoilState(TodoState);

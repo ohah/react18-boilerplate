@@ -1,7 +1,8 @@
+/* eslint-disable camelcase */
+
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
-import { ReactJson } from './Fetch';
 
 export interface IforeCast {
   count: number;
@@ -9,6 +10,48 @@ export interface IforeCast {
   message: string;
   code: string;
 }
+const foreCastName = {
+  sdate: '날짜',
+  stime: '시간',
+  cjunkook: '전국교통량',
+  cjibangDir: '지방방향 교통량',
+  cseoulDir: '서울방향 교통량',
+  csudj: '서울->대전 소요시간',
+  csudg: '서울->대구 소요시간',
+  csuus: '서울->울산 소요시간',
+  csubs: '서울->부산 소요시간',
+  csugj: '서울->광주 소요시간',
+  csump: '서울->목포 소요시간',
+  csukr: '서울->강릉 소요시간',
+  cdjsu: '대전->서울 소요시간',
+  cdgsu: '대구->서울 소요시간',
+  cussu: '울산->서울 소요시간',
+  cbssu: '부산->서울 소요시간',
+  cgjsu: '광주->서울 소요시간',
+  cmpsu: '목포->서울 소요시간',
+  ckrsu: '강릉->서울 소요시간',
+  csuyy: '남양주->양양 소요시간',
+  cyysu: '양양->남양주 소요시간',
+  csudj_bus: '서울->대전 버스 소요시간',
+  csudg_bus: '서울->대구 버스 소요시간',
+  csuus_bus: '서울->울산 버스 소요시간',
+  csubs_bus: '서울->부산 버스 소요시간',
+  csugj_bus: '서울->광주 버스 소요시간',
+  csump_bus: '서울->목포 버스 소요시간',
+  csukr_bus: '서울->강릉 버스 소요시간',
+  csuyy_bus: '남양주->양양 버스 소요시간',
+  cdjsu_bus: '대전->서울 버스 소요시간',
+  cdgsu_bus: '대구->서울 버스 소요시간',
+  cussu_bus: '울산->서울 버스 소요시간',
+  cbssu_bus: '부산->서울 버스 소요시간',
+  cgjsu_bus: '광주->서울 버스 소요시간',
+  cmpsu_bus: '목포->서울 버스 소요시간',
+  ckrsu_bus: '강릉->서울 버스 소요시간',
+  cyysu_bus: '양양->남양주 버스 소요시간',
+  // code: '결과',
+  // message: '결과 메시지',
+  // count: '전체 결과 수',
+};
 export interface foreCastList {
   /**
    * 날짜
@@ -203,6 +246,7 @@ const ForeCastColumn = styled.div`
   grid-template-columns: repeat(2, minmax(0, 2fr));
   & div {
     /* box-sizing: content-box; */
+    padding: 5px 5px;
     margin-top: -1px;
     margin-left: -1px;
     border: 1px solid #ddd;
@@ -226,18 +270,19 @@ const Forecast = () => {
         data.data.list.map(row => {
           return (
             <ForeCastColumn key={row.sdate}>
-              <div>시간</div>
-              <div>{row.sdate}</div>
-              <div>전국교통량</div>
-              <div>{row.cjunkook}</div>
-              <div>{row.cjibangDir}</div>
-              <div>{row.sdate}</div>
+              {Object.keys(foreCastName).map(name => {
+                return (
+                  <>
+                    <div>{foreCastName[name]}</div>
+                    <div> {row[name]} </div>
+                  </>
+                );
+              })}
             </ForeCastColumn>
           );
         })}
     </ForeCastWrapper>
   );
-  // return <div style={{ whiteSpace: 'pre-wrap', padding: '10px' }}>{JSON.stringify(data?.data, null, 2)}</div>;
 };
 
 export default Forecast;
