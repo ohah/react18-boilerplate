@@ -11,7 +11,7 @@ export enum TODO_KEY {
 export const useTodosQuery = () => {
   const setTodo = useSetRecoilState(TodoState);
   return useQuery(TODO_KEY.READ_TODO, () => axios.get<ITodoState[]>('/api/todo').then(({ data }) => data), {
-    // refetchOnWindowFocus: false,
+    refetchOnWindowFocus: false,
     onSuccess: data => setTodo(data),
   });
 };
@@ -38,4 +38,13 @@ export const useTodosUpdateMutation = () => {
       onSuccess: () => queryClient.invalidateQueries(TODO_KEY.READ_TODO),
     },
   );
+};
+
+export const useTodos = () => {
+  return {
+    data: useTodosQuery().data,
+    create: useTodosCreateMutation().mutate,
+    update: useTodosUpdateMutation().mutate,
+    remove: useTodosRemoveMutation().mutate,
+  };
 };

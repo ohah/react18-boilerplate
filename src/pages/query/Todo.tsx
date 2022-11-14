@@ -1,4 +1,5 @@
 import {
+  useTodos,
   useTodosCreateMutation,
   useTodosQuery,
   useTodosRemoveMutation,
@@ -6,10 +7,11 @@ import {
 } from 'store/recoil/todo/useQueryTodoHooks';
 
 const Todo = () => {
-  const { data: todoList } = useTodosQuery();
-  const { mutate: create } = useTodosCreateMutation();
-  const { mutate: update } = useTodosUpdateMutation();
-  const { mutate: remove } = useTodosRemoveMutation();
+  // const { data: todoList } = useTodosQuery();
+  // const { mutate: create } = useTodosCreateMutation();
+  // const { mutate: update } = useTodosUpdateMutation();
+  // const { mutate: remove } = useTodosRemoveMutation();
+  const { data: todoList, create, update, remove } = useTodos();
   return (
     <div>
       <button type="button" onClick={() => create('Hello')}>
