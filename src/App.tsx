@@ -2,14 +2,31 @@ import 'App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from 'pages/Home';
 import Header from 'pages/Header';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import rootReducer from 'store';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { RecoilRoot } from 'recoil';
 import { ToastContext, useToastInit } from 'components/toast/ToastContext';
 import Forecast from 'pages/Forecast';
-const queryClient = new QueryClient();
+import Todo from 'pages/query/Todo';
+// import Todo from 'pages/recoil/Todo';
+import { Suspense } from 'react';
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+  queryCache: new QueryCache({
+    onError(error, query) {
+      console.log('에러');
+    },
+    onSuccess(data, query) {
+      console.log('cache', data, query);
+    },
+  }),
+});
 
 const store = createStore(rootReducer);
 
@@ -21,7 +38,14 @@ function App() {
           <QueryClientProvider client={queryClient}>
             <Routes>
               <Route path="/" element={<Header />}>
-                <Route index element={<Home />} />
+                <Route
+                  index
+                  element={
+                    <Suspense fallback={<div />}>
+                      <Todo />
+                    </Suspense>
+                  }
+                />
                 <Route path="/ForeCast" element={<Forecast />} />
               </Route>
             </Routes>

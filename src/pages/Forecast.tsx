@@ -51,7 +51,7 @@ const foreCastName = {
   // code: '결과',
   // message: '결과 메시지',
   // count: '전체 결과 수',
-};
+} as const;
 export interface foreCastList {
   /**
    * 날짜
