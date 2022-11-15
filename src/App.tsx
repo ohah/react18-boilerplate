@@ -12,20 +12,13 @@ import Forecast from 'pages/Forecast';
 import Todo from 'pages/query/Todo';
 // import Todo from 'pages/recoil/Todo';
 import { Suspense } from 'react';
+import ErrorBoundary from 'components/ErrorBoundary';
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,
     },
   },
-  queryCache: new QueryCache({
-    onError(error, query) {
-      console.log('에러');
-    },
-    onSuccess(data, query) {
-      console.log('cache', data, query);
-    },
-  }),
 });
 
 const store = createStore(rootReducer);
@@ -42,7 +35,9 @@ function App() {
                   index
                   element={
                     <Suspense fallback={<div />}>
-                      <Todo />
+                      <ErrorBoundary fallback={<div> 에러 </div>}>
+                        <Todo />
+                      </ErrorBoundary>
                     </Suspense>
                   }
                 />

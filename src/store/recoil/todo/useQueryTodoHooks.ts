@@ -10,7 +10,7 @@ export enum TODO_KEY {
 
 export const useTodosQuery = () => {
   const setTodo = useSetRecoilState(TodoState);
-  return useQuery(TODO_KEY.READ_TODO, () => axios.get<ITodoState[]>('/api/todo').then(({ data }) => data), {
+  return useQuery(TODO_KEY.READ_TODO, () => axios.get<ITodoState[]>('/api/toddfo').then(({ data }) => data), {
     refetchOnWindowFocus: false,
     onSuccess: data => setTodo(data),
   });
