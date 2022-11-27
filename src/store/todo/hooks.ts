@@ -1,44 +1,36 @@
 /* eslint-disable import/prefer-default-export */
+import axios from 'axios';
 import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { TodoState } from './atom';
 
 export const useTodo = () => {
   const [todo, setTodo] = useRecoilState(TodoState);
-  const create = useCallback(
-    () => (name: string) => {
-      setTodo((state) => {
-        const idArray = state.map((todo) => todo.id);
-        const id = idArray.length === 0 ? 1 : Math.max(...idArray) + 1;
-        const inputData = [{ id: id, name: name }];
-        return [...state, ...inputData];
-      });
-    },
-    [todo],
-  );
+  const create = (name: string) => {
+    axios.post(`/api/todo`, { name }).then(() => readTodo());
+  };
+
+  const readTodo = async () => {
+    const data = await axios.get('/api/todo');
+    setTodo(data.data);
+  };
+
   const remove = (id: number) => {
-    setTodo((state) => {
-      return [...state.filter((todo) => id !== todo.id)];
+    axios.delete(`/api/todo/${id}`).then(() => {
+      readTodo();
     });
   };
   const update = (id: number, name: string) => {
-    setTodo((state) => {
-      const update = state.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            name: name,
-          };
-        }
-        return todo;
-      });
-      return [...update];
+    axios.put(`/api/todo/${id}`, { name }).then(() => {
+      readTodo();
     });
+    // UPDATE, DELETE, PUT, GET, POST
   };
   return {
     todo,
     create,
     update,
     remove,
+    readTodo,
   };
 };

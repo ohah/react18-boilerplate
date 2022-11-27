@@ -14,7 +14,13 @@ import { RecoilRoot } from 'recoil';
 import { createStore } from 'redux';
 import rootReducer from 'store';
 import { Provider } from 'react-redux';
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+});
 export const TestContext = createContext({ toast: '토스트' });
 
 const store = createStore(rootReducer);
