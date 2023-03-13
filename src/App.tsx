@@ -1,75 +1,32 @@
+import reactLogo from 'assets/react.svg';
+import React, { useState } from 'react';
 import 'App.css';
-import { Tooltip, Listbox, Modal, Toast, Pagination } from 'components';
-import { EasyListBox, EasyTab } from 'components/Easy';
-import { TabData } from 'components/Easy/Tab';
-import { useState } from 'react';
-import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
-const GlobalStyles = createGlobalStyle` 
-  ${reset}
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  * {
-    box-sizing: border-box;
-  }
-`;
 
 function App() {
-  const data = [
-    { title: '툴팁', value: '툴팁' },
-    { title: '패널', value: '패널' },
-    { title: '드롭다운', value: '드롭다운' },
-    { title: '토글', value: '토글' },
-    { title: '페이지네이션', value: '페이지네이션' },
-    { title: '모달', value: '모달' },
-    { title: '토스트', value: '토스트' },
-  ];
-
-  const tabData: TabData[] = [
-    { title: 'Tab1', children: 'Tab1 내용' },
-    { title: 'Tab2', children: <div>Tab2 내용</div> },
-  ];
-
-  const [selectedData, setSelectedData] = useState(data[1]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [count, setCount] = useState(0);
 
   return (
-    <Toast.Context.Provider value={Toast.initialState()}>
-      <div className="App">
-        <GlobalStyles />
-        <EasyTab data={tabData} />
-        <EasyListBox value={selectedData} onChange={setSelectedData} data={data} />
-        <Listbox value={selectedData} onChange={setSelectedData}>
-          <Listbox.Button>{selectedData.value}</Listbox.Button>
-          <Listbox.Options>
-            {data.map(_data => {
-              const { title, value } = _data;
-              return (
-                <Listbox.Option className="abc" key={title} value={_data}>
-                  {value}
-                </Listbox.Option>
-              );
-            })}
-          </Listbox.Options>
-        </Listbox>
-        <button type="button" onClick={() => setIsOpen(true)}>
-          열어
-        </button>
-        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-          <Modal.Header> 헤더 </Modal.Header>
-          <Modal.Body>
-            <Tooltip title="타이틀" position="right">
-              툴팁
-            </Tooltip>
-          </Modal.Body>
-          <Modal.Footer> 푸터 </Modal.Footer>
-        </Modal>
-        <Pagination total={300} pageLimit={10} current={5} pageSize={1} />
+    <div className="App">
+      <div>
+        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
+          <img src="/vite.svg" className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
       </div>
-      <Toast.Container />
-    </Toast.Context.Provider>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button type="button" onClick={() => setCount(count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+
+      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+    </div>
   );
 }
 
