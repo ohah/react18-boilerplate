@@ -44,10 +44,10 @@ function App() {
         <Listbox value={selectedData} onChange={setSelectedData}>
           <Listbox.Button>{selectedData.value}</Listbox.Button>
           <Listbox.Options>
-            {data.map(_data => {
-              const { title, value } = _data;
+            {data.map(item => {
+              const { title, value } = item;
               return (
-                <Listbox.Option className="abc" key={title} value={_data}>
+                <Listbox.Option className="abc" key={title} value={item}>
                   {value}
                 </Listbox.Option>
               );
