@@ -1,5 +1,5 @@
 import 'App.css';
-import { Tooltip, Listbox, Modal, Toast, Pagination } from 'components';
+import { Tooltip, Listbox, Modal, Toast, Pagination, Toggle } from 'components';
 import { EasyListBox, EasyTab } from 'components/Easy';
 import { TabData } from 'components/Easy/Tab';
 import { useState } from 'react';
@@ -68,6 +68,7 @@ function App() {
         </Modal>
         <Pagination total={300} pageLimit={10} current={5} pageSize={1} />
       </div>
+      <Toggle active />
       <Toast.Container />
     </Toast.Context.Provider>
   );

@@ -1,6 +1,7 @@
 /* eslint-disable no-promise-executor-return */
 /* eslint-disable react/jsx-no-useless-fragment */
-import { fireEvent, render, renderHook, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, renderHook, screen, waitFor, act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Toast, { useToast } from 'components/Toast';
 
 const App = ({ children }: { children: React.ReactNode }) => {
@@ -17,7 +18,15 @@ const Component = () => {
           toast('테스트');
         }}
       >
-        토스트
+        Toast
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          toast('토스트');
+        }}
+      >
+        토스트2
       </button>
       <Toast.Container />
     </div>
@@ -26,27 +35,26 @@ const Component = () => {
 
 describe('토스트 테스트', () => {
   test('클릭 테스트', async () => {
-    // jest.useFakeTimers();
+    jest.useFakeTimers();
     const { result } = renderHook(() => Toast.initialState());
-    const { container, debug, rerender } = render(
+    const spy = jest.spyOn(result.current, 'toast');
+    render(
       <App>
         <Toast.Context.Provider value={result.current}>
           <Component />
         </Toast.Context.Provider>
       </App>,
     );
-    await fireEvent.click(await screen.getByText(/토스트/i));
-    // console.log('none', result.current.queue);
+    await fireEvent.click(await screen.getByText(/Toast/i));
     await waitFor(async () => {
-      expect(result.current.queue[0].message).toEqual('테스트');
+      expect(result.current.queue[0].message).toBe('테스트');
+      expect(spy.mock.calls[0][0]).toBe('테스트');
+      await setTimeout(async () => {
+        await fireEvent.click(await screen.getByText(/토스트2/i));
+        expect(spy.mock.calls[1][0]).toBe('토스트');
+        expect(result.current.queue[0].message).toBe('토스트');
+      }, 5000);
     });
-    await waitFor(async () => {
-      await fireEvent.click(await screen.getByText(/토스트/i));
-    });
-    console.log('result.current', result.current);
-    console.log('container', await container.innerHTML);
-    console.log('debug', await debug());
-    // expect(result.current.queue[0].message).toEqual('테스트');
-    // jest.runAllTimers();
+    jest.runAllTimers();
   });
 });

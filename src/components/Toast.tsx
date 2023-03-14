@@ -51,6 +51,12 @@ const initialState = () => {
         id: `toast-${uuidv4()}`,
         message,
       };
+      setTimeout(() => {
+        setQueue(currQueue => {
+          const autoClose = currQueue.filter(q => q.id !== newQueue.id);
+          return [...autoClose];
+        });
+      }, 3000);
       return [...currQueue, newQueue];
     });
   };
@@ -62,15 +68,6 @@ const initialState = () => {
 };
 
 const Message = (props: Iqueue) => {
-  const { setQueue } = useToast();
-  useEffect(() => {
-    setTimeout(() => {
-      setQueue(currQueue => {
-        const autoClose = currQueue.filter(q => q.id !== props.id);
-        return [...autoClose];
-      });
-    }, 3000);
-  });
   return (
     <Toast key={props.id} {...props}>
       {props.message}
